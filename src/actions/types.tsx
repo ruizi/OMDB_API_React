@@ -1,0 +1,4 @@
+export const SEARCH_MOVIE = "SEARCH_MOVIE";
+export const ADD_NOMINATION = "ADD_NOMINATION";
+export const REMOVE_NOMINATION = "REMOVE_NOMINATION";
+export const MOVIE_ERROR = "MOVIE_ERROR";
