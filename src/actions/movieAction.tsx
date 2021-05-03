@@ -20,6 +20,7 @@ interface myAction {
 //Get first ten movies based on the input movie title
 export const getMovies = async (movieTitle: string, dispatch: Dispatch<myAction>) => {
     try {
+        console.log(movieTitle)
         const res = await axios.get('https://www.omdbapi.com/?s=' + movieTitle + '&type=movie&apikey=9c01b986')
         console.log(res)
         if (res.data["Search"]) {
