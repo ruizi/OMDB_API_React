@@ -18,10 +18,10 @@ interface myAction {
 }
 
 //Get first ten movies based on the input movie title
-export const getMovies = async (movieTitle: string, dispatch: Dispatch<myAction>) => {
+export const getMovies = async (movieTitle: string, pageNum: number, dispatch: Dispatch<myAction>) => {
     try {
         console.log(movieTitle)
-        const res = await axios.get('https://www.omdbapi.com/?s=' + movieTitle + '&type=movie&apikey=9c01b986')
+        const res = await axios.get('https://www.omdbapi.com/?s=' + movieTitle + '&type=movie&apikey=9c01b986&page=' + pageNum)
         console.log(res)
         if (res.data["Search"]) {
             const movieItems = res.data["Search"].map((mov: any) => ({
@@ -30,9 +30,11 @@ export const getMovies = async (movieTitle: string, dispatch: Dispatch<myAction>
                 poster: mov.Poster,
                 imdbID: mov.imdbID
             }));
+            const newPageNum = pageNum + 1;
+            const totalResults = res.data.totalResults;
             dispatch({
                 type: SEARCH_MOVIE,
-                payload: movieItems,
+                payload: {movieItems, newPageNum, totalResults}
             });
         } else {
             dispatch({

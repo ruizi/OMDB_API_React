@@ -10,6 +10,8 @@ export interface MovieAction {
 const initialMovieState = {
     movieSearched: [],
     movieNominated: [],
+    pageNum: 1,
+    totalResults: 0,
     error: {},
 }
 
@@ -21,7 +23,9 @@ export const MovieReducer = (state: any | null = initialMovieState, action: Movi
         case SEARCH_MOVIE:
             return {
                 ...state,
-                movieSearched: payload,
+                movieSearched: payload.movieItems,
+                pageNum: payload.newPageNum,
+                totalResults: payload.totalResults
             }
         case ADD_NOMINATION:
             return {

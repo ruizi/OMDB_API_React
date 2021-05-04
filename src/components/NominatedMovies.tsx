@@ -22,37 +22,38 @@ const NominatedMovies = () => {
 
     return (
         <React.Fragment>
-            <Card style={{marginTop:"20px"}}>
+            <Card style={{marginTop: "20px"}}>
                 <CardHeader
                     // subtitle={`${products.length} in total`}
                     title="Nominated Movies"
-                    style={{textAlign:"left"}}
+                    style={{textAlign: "left"}}
                 />
                 <Divider/>
-                <List>
-                    {nominations.map((mov, index) => (
-                        <ListItem
-                            divider={index < nominations.length - 1}
-                            key={mov.imdbID}
-                        >
-                            <ListItemAvatar>
-                                <Avatar>
-                                    <MovieIcon/>
-                                </Avatar>
-                            </ListItemAvatar>
-                            <ListItemText
-                                primary={mov.title}
-                                secondary={`Posted on ${mov.yearOfLease}`}
-                            />
-                            <ListItemSecondaryAction>
-                                <Button variant="contained" color="secondary" style={{textTransform: 'none'}}
-                                        onClick={() => removeNomination(mov, dispatch)}>
-                                    Remove
-                                </Button>
-                            </ListItemSecondaryAction>
-                        </ListItem>
-                    ))}
-                </List>
+                {nominations.length !== 0 && (
+                    <List>
+                        {nominations.map((mov, index) => (
+                            <ListItem
+                                divider={index < nominations.length - 1}
+                                key={mov.imdbID}
+                            >
+                                <ListItemAvatar>
+                                    <Avatar>
+                                        <MovieIcon/>
+                                    </Avatar>
+                                </ListItemAvatar>
+                                <ListItemText
+                                    primary={mov.title}
+                                    secondary={`Posted on ${mov.yearOfLease}`}
+                                />
+                                <ListItemSecondaryAction>
+                                    <Button variant="contained" color="secondary" style={{textTransform: 'none'}}
+                                            onClick={() => removeNomination(mov, dispatch)}>
+                                        Remove
+                                    </Button>
+                                </ListItemSecondaryAction>
+                            </ListItem>
+                        ))}
+                    </List>)}
             </Card>
         </React.Fragment>
     )

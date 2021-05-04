@@ -11,10 +11,8 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import MovieIcon from '@material-ui/icons/Movie';
-import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';
 import {Card, CardHeader, Divider} from "@material-ui/core";
-import CheckIcon from '@material-ui/icons/Check';
 
 const SearchResults = () => {
     const _movies = useSelector((state: AppState) => state.movies);
@@ -23,7 +21,9 @@ const SearchResults = () => {
     const dispatch = useDispatch();
 
     const renderButton = (mov: Movie) => {
-        if (nominations.length < 5) {
+        if (nominations.length < 5 && !nominations.some((item) => {
+            return item === mov;
+        })) {
             return (
                 <Button variant="contained" color="primary" style={{textTransform: 'none'}}
                         onClick={() => addNomination(mov, dispatch)}>Nominate</Button>
@@ -35,14 +35,14 @@ const SearchResults = () => {
 
     return (
         <React.Fragment>
-            <Card style={{marginTop:"20px"}}>
+            <Card style={{marginTop: "20px"}}>
                 <CardHeader
                     // subtitle={`${products.length} in total`}
                     title="Results"
-                    style={{textAlign:"left"}}
+                    style={{textAlign: "left"}}
                 />
                 <Divider/>
-                <List>
+                {movies.length !== 0 && (<List>
                     {movies.map((mov, index) => (
                         <ListItem
                             divider={index < movies.length - 1}
@@ -62,7 +62,8 @@ const SearchResults = () => {
                             </ListItemSecondaryAction>
                         </ListItem>
                     ))}
-                </List>
+                </List>)}
+
             </Card>
 
         </React.Fragment>

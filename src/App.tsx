@@ -10,26 +10,34 @@ import {
     Grid
 } from '@material-ui/core';
 import {ThemeProvider} from "@material-ui/core/styles";
+import Navbar from "./layout/Navbar";
 
 function App() {
     return (
         <ThemeProvider theme={theme}>
-            <Grid>
-                <Container maxWidth={false}>
-                    <Grid item lg={8} sm={6} xl={3} xs={12}>
-                        <SearchMovieInput/>
-                    </Grid>
+            <div>
+                <Navbar/>
+            </div>
+            <Container style={{width: "100%"}}>
 
-                    <Grid container spacing={3}>
-                        <Grid item lg={4} sm={6} xl={3} xs={12}>
-                            <SearchResults/>
+                <Grid style={{width: "100%"}} >
+                    <Container style={{width: "100%"}}>
+                        <Grid item lg={12} sm={12} xl={12} xs={12}>
+                            <SearchMovieInput/>
                         </Grid>
-                        <Grid item lg={4} sm={6} xl={3} xs={12}>
-                            <NominatedMovies/>
+                    </Container>
+                    <Container style={{width: "100%"}}>
+                        <Grid container spacing={2}>
+                            <Grid item lg={6} sm={6} xl={6} xs={12}>
+                                <SearchResults/>
+                            </Grid>
+                            <Grid item lg={6} sm={6} xl={6} xs={12}>
+                                <NominatedMovies/>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </Container>
-            </Grid>
+                    </Container>
+                </Grid>
+            </Container>
         </ThemeProvider>
     );
 }
