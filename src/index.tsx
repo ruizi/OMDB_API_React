@@ -5,11 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
 import configureStore from "./store/configureStore";
+import {SnackbarProvider} from "notistack";
+import {theme} from "./theme/myTheme";
+import {ThemeProvider} from "@material-ui/core/styles";
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={configureStore()}>
-            <App/>
+            <SnackbarProvider maxSnack={3}>
+                <ThemeProvider theme={theme}>
+                    <App/>
+                </ThemeProvider>
+            </SnackbarProvider>
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')

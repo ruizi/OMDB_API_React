@@ -1,44 +1,45 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import SearchMovieInput from "./components/SearchMovieInput";
 import SearchResults from "./components/SearchResults";
 import NominatedMovies from "./components/NominatedMovies";
-import {theme} from "./theme/myTheme";
-import {
-    Box,
-    Container,
-    Grid
-} from '@material-ui/core';
-import {ThemeProvider} from "@material-ui/core/styles";
+
+import {Container, Grid} from '@material-ui/core';
+
 import Navbar from "./layout/Navbar";
+import Message from "./layout/Message";
+import {loadNominatedMovies} from "./actions/movieAction";
+import {useDispatch} from "react-redux";
 
-function App() {
+
+const App = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        loadNominatedMovies(dispatch);
+    });
+
+
     return (
-        <ThemeProvider theme={theme}>
-            <div>
-                <Navbar/>
-            </div>
-            <Container style={{width: "100%"}}>
-
-                <Grid style={{width: "100%"}} >
-                    <Container style={{width: "100%"}}>
-                        <Grid item lg={12} sm={12} xl={12} xs={12}>
-                            <SearchMovieInput/>
+        <React.Fragment>
+            <Navbar/>
+            <Message/>
+            <Container style={{margin: 'auto'}}>
+                <div style={{justifyContent: 'center', display: 'flex'}}>
+                    <SearchMovieInput/>
+                </div>
+                <div style={{justifyContent: 'center', display: 'flex'}}>
+                    <Grid container>
+                        <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
+                            <SearchResults/>
                         </Grid>
-                    </Container>
-                    <Container style={{width: "100%"}}>
-                        <Grid container spacing={2}>
-                            <Grid item lg={6} sm={6} xl={6} xs={12}>
-                                <SearchResults/>
-                            </Grid>
-                            <Grid item lg={6} sm={6} xl={6} xs={12}>
-                                <NominatedMovies/>
-                            </Grid>
+                        <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
+                            <NominatedMovies/>
                         </Grid>
-                    </Container>
-                </Grid>
+                    </Grid>
+                </div>
             </Container>
-        </ThemeProvider>
+        </React.Fragment>
     );
 }
 

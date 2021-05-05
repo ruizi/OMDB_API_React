@@ -1,4 +1,11 @@
-import {ADD_NOMINATION, MOVIE_ERROR, REMOVE_NOMINATION, SEARCH_MOVIE} from "../actions/types";
+import {
+    ADD_NOMINATION, LOAD_NOMINATED_MOVIES,
+    LOAD_NOMINATED_MOVIES_ERROR,
+    MOVIE_ERROR, REFRESH_LOCAL_STORAGE,
+    REMOVE_ALL_NOMINATION,
+    REMOVE_NOMINATION,
+    SEARCH_MOVIE
+} from "../actions/types";
 import {Movie} from "../actions/movieAction";
 
 
@@ -10,22 +17,24 @@ export interface MovieAction {
 const initialMovieState = {
     movieSearched: [],
     movieNominated: [],
+    searchInput: "",
     pageNum: 1,
+    pageSize: 10,
     totalResults: 0,
     error: {},
 }
 
 export const MovieReducer = (state: any | null = initialMovieState, action: MovieAction) => {
     const {type, payload} = action;
-    console.log(state)
-    console.log("payload", payload);
+    //console.log("payload", payload);
     switch (type) {
         case SEARCH_MOVIE:
             return {
                 ...state,
                 movieSearched: payload.movieItems,
                 pageNum: payload.newPageNum,
-                totalResults: payload.totalResults
+                totalResults: payload.totalResults,
+                searchInput: payload.searchInput,
             }
         case ADD_NOMINATION:
             return {
@@ -40,6 +49,20 @@ export const MovieReducer = (state: any | null = initialMovieState, action: Movi
                     }
                 )
             }
+        case REMOVE_ALL_NOMINATION:
+            return {
+                ...state,
+                movieNominated: []
+            }
+        case REFRESH_LOCAL_STORAGE:
+            localStorage.setItem("nominatedMovies", JSON.stringify(state.movieNominated));
+            return state;
+        case LOAD_NOMINATED_MOVIES:
+            return {
+                ...state,
+                movieNominated: payload,
+            }
+        case LOAD_NOMINATED_MOVIES_ERROR:
         case MOVIE_ERROR:
             return {
                 ...state,

@@ -1,4 +1,3 @@
-import {Link} from "@material-ui/icons";
 import {AppBar, Icon, Toolbar, Typography} from "@material-ui/core";
 import TrackChangesIcon from '@material-ui/icons/TrackChanges';
 
