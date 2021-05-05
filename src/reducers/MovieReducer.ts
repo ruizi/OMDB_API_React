@@ -26,7 +26,6 @@ const initialMovieState = {
 
 export const MovieReducer = (state: any | null = initialMovieState, action: MovieAction) => {
     const {type, payload} = action;
-    //console.log("payload", payload);
     switch (type) {
         case SEARCH_MOVIE:
             return {

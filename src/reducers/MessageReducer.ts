@@ -10,7 +10,6 @@ const initialMessageState = {
 
 export const MessageReducer = (state: messageState = initialMessageState, action: addMsgAction | closeMsgAction) => {
     const {type, payload} = action;
-    //console.log(payload);
     switch (type) {
         case "ADD_MESSAGE":
             return {

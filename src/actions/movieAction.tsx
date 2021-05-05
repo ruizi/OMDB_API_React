@@ -43,8 +43,9 @@ export const getMovies = async (movieTitle: string, pageNum: number, dispatch: D
                 type: SEARCH_MOVIE,
                 payload: {movieItems, newPageNum, totalResults, searchInput}
             });
-            await AddMessage("Success get date from API@", 'success', dispatch);
+            AddMessage("Results back :)", 'success', dispatch);
         } else {
+            AddMessage("Too many results. or invalid input!", 'error', dispatch);
             dispatch({
                 type: MOVIE_ERROR,
                 payload: {
@@ -54,6 +55,7 @@ export const getMovies = async (movieTitle: string, pageNum: number, dispatch: D
             });
         }
     } catch (e) {
+        AddMessage("Invalid input!", 'error', dispatch);
         dispatch({
             type: MOVIE_ERROR,
             payload: {
@@ -76,7 +78,10 @@ export const addNomination = (newNominatedMovie: Movie, dispatch: Dispatch<myAct
             payload: {}
         })
 
+        AddMessage("Success nominate a movie", 'info', dispatch);
+
     } catch (e) {
+        AddMessage("Nomination Error :( ", 'error', dispatch);
         dispatch({
             type: MOVIE_ERROR,
             payload: {
@@ -98,7 +103,10 @@ export const removeNomination = (newNominatedMovie: Movie, dispatch: Dispatch<my
             type: REFRESH_LOCAL_STORAGE,
             payload: {}
         })
+
+        AddMessage("Success remove nominated movie ", 'success', dispatch);
     } catch (e) {
+        AddMessage("Remove Nomination Error :(", 'error', dispatch);
         dispatch({
             type: MOVIE_ERROR,
             payload: {
@@ -119,6 +127,7 @@ export const removeAllNomination = (dispatch: Dispatch<myAction>) => {
             type: REFRESH_LOCAL_STORAGE,
             payload: {}
         })
+        AddMessage("Success remove all nominated ", 'success', dispatch);
     } catch (e) {
         dispatch({
             type: MOVIE_ERROR,
@@ -137,8 +146,11 @@ export const loadNominatedMovies = (dispatch: Dispatch<myAction>) => {
                 type: LOAD_NOMINATED_MOVIES,
                 payload: nominated,
             })
+            AddMessage("Success load nominated movie", 'info', dispatch);
+            AddMessage("Welcome back ! :)", 'success', dispatch);
         }
     } catch (e) {
+        AddMessage("Load error :(", 'warning', dispatch);
         dispatch({
             type: LOAD_NOMINATED_MOVIES_ERROR,
             payload: {
