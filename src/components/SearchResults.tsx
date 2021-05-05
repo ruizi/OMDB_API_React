@@ -24,6 +24,7 @@ import {AddMessage} from "../actions/MessageAction";
 const SearchResults = () => {
     const _movies = useSelector((state: AppState) => state.movies);
     const movies: Array<Movie> = _movies['movieSearched'];
+    console.log(movies)
     const nominations: Array<Movie> = _movies['movieNominated'];
     const {
         pageNum,
@@ -118,7 +119,7 @@ const SearchResults = () => {
                             {movies.map((mov, index) => (
                                 <ListItem
                                     divider={index < movies.length - 1}
-                                    key={mov.imdbID}
+                                    key={index}
                                 >
                                     <ListItemAvatar>
                                         <Avatar src={mov.poster}/>

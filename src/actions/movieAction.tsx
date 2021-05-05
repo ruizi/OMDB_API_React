@@ -43,6 +43,7 @@ export const getMovies = async (movieTitle: string, pageNum: number, leaseYear: 
                 poster: mov.Poster,
                 imdbID: mov.imdbID
             }));
+            console.log(movieItems)
             const newPageNum = pageNum;
             const totalResults = res.data.totalResults;
             const searchInput = movieTitle;
