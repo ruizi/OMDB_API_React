@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/OMDB_Searcher-app/static/css/main.55094579.chunk.css",
+    "main.js": "/OMDB_Searcher-app/static/js/main.e4ac7582.chunk.js",
+    "main.js.map": "/OMDB_Searcher-app/static/js/main.e4ac7582.chunk.js.map",
+    "runtime-main.js": "/OMDB_Searcher-app/static/js/runtime-main.ca88d36c.js",
+    "runtime-main.js.map": "/OMDB_Searcher-app/static/js/runtime-main.ca88d36c.js.map",
+    "static/js/2.71b51dc4.chunk.js": "/OMDB_Searcher-app/static/js/2.71b51dc4.chunk.js",
+    "static/js/2.71b51dc4.chunk.js.map": "/OMDB_Searcher-app/static/js/2.71b51dc4.chunk.js.map",
+    "static/js/3.99d93e0a.chunk.js": "/OMDB_Searcher-app/static/js/3.99d93e0a.chunk.js",
+    "static/js/3.99d93e0a.chunk.js.map": "/OMDB_Searcher-app/static/js/3.99d93e0a.chunk.js.map",
+    "index.html": "/OMDB_Searcher-app/index.html",
+    "static/css/main.55094579.chunk.css.map": "/OMDB_Searcher-app/static/css/main.55094579.chunk.css.map",
+    "static/js/2.71b51dc4.chunk.js.LICENSE.txt": "/OMDB_Searcher-app/static/js/2.71b51dc4.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ca88d36c.js",
+    "static/js/2.71b51dc4.chunk.js",
+    "static/css/main.55094579.chunk.css",
+    "static/js/main.e4ac7582.chunk.js"
+  ]
+}
