@@ -19,6 +19,7 @@ import {
 } from "@material-ui/core";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import {AddMessage} from "../actions/MessageAction";
 
 const SearchResults = () => {
     const _movies = useSelector((state: AppState) => state.movies);
@@ -29,9 +30,11 @@ const SearchResults = () => {
     //const {enqueueSnackbar, closeSnackbar} = useSnackbar();
     const onClickNextPage = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         if (pageNum * pageSize >= totalResults) {
-            //TODO alert "last page"
+            AddMessage("Last page", 'info', dispatch);
+        }else{
+            await getMovies(searchInput, pageNum + 1, dispatch);
         }
-        await getMovies(searchInput, pageNum + 1, dispatch);
+
     }
 
     const onClickPrePage = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

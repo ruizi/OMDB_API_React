@@ -43,7 +43,10 @@ export const getMovies = async (movieTitle: string, pageNum: number, dispatch: D
                 type: SEARCH_MOVIE,
                 payload: {movieItems, newPageNum, totalResults, searchInput}
             });
-            AddMessage("Results back :)", 'success', dispatch);
+            if(pageNum===1){
+                AddMessage(totalResults + "movies found :)", 'success', dispatch);
+            }
+
         } else {
             AddMessage("Too many results. or invalid input!", 'error', dispatch);
             dispatch({
