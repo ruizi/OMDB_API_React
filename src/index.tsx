@@ -12,7 +12,7 @@ import {ThemeProvider} from "@material-ui/core/styles";
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={configureStore()}>
-            <SnackbarProvider maxSnack={3}>
+            <SnackbarProvider maxSnack={5}>
                 <ThemeProvider theme={theme}>
                     <App/>
                 </ThemeProvider>

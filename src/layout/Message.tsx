@@ -11,14 +11,11 @@ const Message = () => {
 
 
     useEffect(() => {
-        const showMsg = (message: messageObj) => {
-            enqueueSnackbar(message.message, {
-                variant: message.alertType,
-                preventDuplicate: true,
-            })
-        }
         messages !== null && messages.length > 0 &&
-        messages.map((item: messageObj, index) => (showMsg(item)))
+        messages.map((item: messageObj, index) => (enqueueSnackbar(item.message, {
+            variant: item.alertType,
+            preventDuplicate: true,
+        })))
     }, [messages, enqueueSnackbar])
 
     return null
