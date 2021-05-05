@@ -25,9 +25,16 @@ interface myAction {
 }
 
 //Get first ten movies based on the input movie title
-export const getMovies = async (movieTitle: string, pageNum: number, dispatch: Dispatch<myAction>) => {
+export const getMovies = async (movieTitle: string, pageNum: number, leaseYear: string, dispatch: Dispatch<myAction>) => {
     try {
-        const res = await axios.get(`https://www.omdbapi.com/?s=${movieTitle}&type=movie&apikey=9c01b986&page=${pageNum}`)
+        let url = '';
+        if (leaseYear !== '----') {
+            console.log("sss")
+            url = `https://www.omdbapi.com/?s=${movieTitle}&type=movie&apikey=9c01b986&page=${pageNum}&y=${leaseYear}`;
+        } else {
+            url = `https://www.omdbapi.com/?s=${movieTitle}&type=movie&apikey=9c01b986&page=${pageNum}`;
+        }
+        const res = await axios.get(url)
         console.log(res)
         if (res.data["Search"]) {
             const movieItems = res.data["Search"].map((mov: any) => ({
@@ -39,33 +46,22 @@ export const getMovies = async (movieTitle: string, pageNum: number, dispatch: D
             const newPageNum = pageNum;
             const totalResults = res.data.totalResults;
             const searchInput = movieTitle;
+            const movieLeaseYear = leaseYear;
             dispatch({
                 type: SEARCH_MOVIE,
-                payload: {movieItems, newPageNum, totalResults, searchInput}
+                payload: {movieItems, newPageNum, totalResults, searchInput, movieLeaseYear}
             });
             if (pageNum === 1) {
                 AddMessage(totalResults + " movies found,cheers!", 'success', dispatch);
             }
 
+        } else if (res.data["Error"]) {
+            AddMessage(res.data["Error"], 'error', dispatch);
         } else {
             AddMessage("Too many results. or invalid input!", 'error', dispatch);
-            dispatch({
-                type: MOVIE_ERROR,
-                payload: {
-                    msg: "Too many results. or invalid input!",
-                    status: res.status,
-                },
-            });
         }
     } catch (e) {
         AddMessage("Invalid input!", 'error', dispatch);
-        dispatch({
-            type: MOVIE_ERROR,
-            payload: {
-                msg: e.response.statusText,
-                status: e.response.status,
-            },
-        });
     }
 }
 

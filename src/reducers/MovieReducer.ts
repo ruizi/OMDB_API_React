@@ -18,6 +18,7 @@ const initialMovieState = {
     movieSearched: [],
     movieNominated: [],
     searchInput: "",
+    movieLeaseYear: "",
     pageNum: 1,
     pageSize: 10,
     totalResults: 0,
@@ -34,6 +35,7 @@ export const MovieReducer = (state: any | null = initialMovieState, action: Movi
                 pageNum: payload.newPageNum,
                 totalResults: payload.totalResults,
                 searchInput: payload.searchInput,
+                movieLeaseYear: payload.movieLeaseYear,
             }
         case ADD_NOMINATION:
             return {

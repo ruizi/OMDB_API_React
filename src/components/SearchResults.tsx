@@ -25,14 +25,20 @@ const SearchResults = () => {
     const _movies = useSelector((state: AppState) => state.movies);
     const movies: Array<Movie> = _movies['movieSearched'];
     const nominations: Array<Movie> = _movies['movieNominated'];
-    const {pageNum, pageSize, totalResults, searchInput} = useSelector((state: AppState) => state.movies);
+    const {
+        pageNum,
+        pageSize,
+        totalResults,
+        searchInput,
+        movieLeaseYear
+    } = useSelector((state: AppState) => state.movies);
     const dispatch = useDispatch();
     //const {enqueueSnackbar, closeSnackbar} = useSnackbar();
     const onClickNextPage = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         if (pageNum * pageSize >= totalResults) {
             AddMessage("Last page", 'info', dispatch);
         } else {
-            await getMovies(searchInput, pageNum + 1, dispatch);
+            await getMovies(searchInput, pageNum + 1, movieLeaseYear, dispatch);
         }
 
     }
@@ -41,7 +47,7 @@ const SearchResults = () => {
         if (pageNum === 1) {
             AddMessage("First page", 'info', dispatch);
         } else {
-            await getMovies(searchInput, pageNum - 1, dispatch);
+            await getMovies(searchInput, pageNum - 1, movieLeaseYear, dispatch);
         }
 
     }
