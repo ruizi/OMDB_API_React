@@ -47,14 +47,17 @@ const SearchResults = () => {
     }
 
     const renderNominationButton = (mov: Movie) => {
-        if (nominations.length < 5 && !nominations.some((item) => {
-            return item.imdbID === mov.imdbID
-        })) {
-            return (
-                <Button variant="contained" color="primary" style={{textTransform: 'none'}}
-                        onClick={() => addNomination(mov, dispatch)}>Nominate</Button>
-            )
+        if (nominations.length < 5) {
+            if (!nominations.some((item) => {
+                return item.imdbID === mov.imdbID
+            })) {
+                return (
+                    <Button variant="contained" color="primary" style={{textTransform: 'none'}}
+                            onClick={() => addNomination(mov, dispatch)}>Nominate</Button>
+                )
+            }
         } else {
+            AddMessage("Well done! 5 movies nominated :)", 'success', dispatch);
             return null;
         }
     }

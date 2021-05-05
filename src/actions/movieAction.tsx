@@ -43,7 +43,7 @@ export const getMovies = async (movieTitle: string, pageNum: number, dispatch: D
                 type: SEARCH_MOVIE,
                 payload: {movieItems, newPageNum, totalResults, searchInput}
             });
-            if(pageNum===1){
+            if (pageNum === 1) {
                 AddMessage(totalResults + " movies found,cheers!", 'success', dispatch);
             }
 
@@ -81,7 +81,7 @@ export const addNomination = (newNominatedMovie: Movie, dispatch: Dispatch<myAct
             payload: {}
         })
 
-        AddMessage("Success nominate a movie", 'info', dispatch);
+        AddMessage("Success nominate " + newNominatedMovie.title.substring(0, 10) + "...", 'info', dispatch);
 
     } catch (e) {
         AddMessage("Nomination Error :( ", 'error', dispatch);
@@ -107,7 +107,7 @@ export const removeNomination = (newNominatedMovie: Movie, dispatch: Dispatch<my
             payload: {}
         })
 
-        AddMessage("Success remove nominated movie ", 'success', dispatch);
+        AddMessage("Success remove " + newNominatedMovie.title.substring(0, 10) + "...", 'success', dispatch);
     } catch (e) {
         AddMessage("Remove Nomination Error :(", 'error', dispatch);
         dispatch({
