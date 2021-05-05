@@ -44,7 +44,7 @@ export const getMovies = async (movieTitle: string, pageNum: number, dispatch: D
                 payload: {movieItems, newPageNum, totalResults, searchInput}
             });
             if(pageNum===1){
-                AddMessage(totalResults + "movies found :)", 'success', dispatch);
+                AddMessage(totalResults + " movies found,cheers!", 'success', dispatch);
             }
 
         } else {
