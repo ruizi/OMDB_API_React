@@ -31,14 +31,19 @@ const SearchResults = () => {
     const onClickNextPage = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         if (pageNum * pageSize >= totalResults) {
             AddMessage("Last page", 'info', dispatch);
-        }else{
+        } else {
             await getMovies(searchInput, pageNum + 1, dispatch);
         }
 
     }
 
     const onClickPrePage = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        await getMovies(searchInput, pageNum - 1, dispatch);
+        if (pageNum === 1) {
+            AddMessage("First page", 'info', dispatch);
+        } else {
+            await getMovies(searchInput, pageNum - 1, dispatch);
+        }
+
     }
 
     const renderNominationButton = (mov: Movie) => {
