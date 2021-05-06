@@ -4,7 +4,7 @@
 
 the project deployed on GitHub page @ https://ruizi.github.io/OMDB_Searcher/
 
-![](The Shoppies.gif)
+![](https://github.com/ruizi/OMDB_Searcher/blob/main/public/The%20Shoppies.gif)
 
 ---
 
