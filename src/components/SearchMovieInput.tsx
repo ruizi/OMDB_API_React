@@ -50,7 +50,7 @@ const SearchMovieInput = () => {
                                 <Grid container>
                                     <Grid item lg={12} sm={12} xl={12} xs={12}>
                                         <Box style={{justifyContent: 'start', display: 'flex', flexWrap: 'wrap'}}>
-                                            <div style={{width: '80%'}}>
+                                            <div style={{width: '80%', marginTop: '5px', marginRight: '5px'}}>
                                                 <TextField required label="movie title" fullWidth InputProps={{
                                                     startAdornment: (
                                                         <InputAdornment position="start">
@@ -67,7 +67,7 @@ const SearchMovieInput = () => {
                                                            value={movieTitle}
                                                 />
                                             </div>
-                                            <div style={{width: '19%', marginLeft: '5px'}}>
+                                            <div style={{width: '18%', marginTop: '5px', marginRight: '5px'}}>
                                                 <TextField
                                                     id="outlined-select-currency-native"
                                                     select
