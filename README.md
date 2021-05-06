@@ -2,7 +2,9 @@
 
 [![License](https://img.shields.io/badge/license-MIT-green)](http://badges.mit-license.org)
 
-the deployment project address is https://ruizi.github.io/OMDB_Searcher/
+the project deployed on GitHub page @ https://ruizi.github.io/OMDB_Searcher/
+
+![](The Shoppies.gif)
 
 ---
 
@@ -25,7 +27,7 @@ the deployment project address is https://ruizi.github.io/OMDB_Searcher/
 
 4. Run `npm start` to running the project locally.
 
-5. Open your browser and surfing this address  https://localhost:3000
+5. Open your browser and surfing this address http://localhost:3000/
 
 ## deployment
 
