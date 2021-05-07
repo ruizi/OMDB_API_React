@@ -29,13 +29,12 @@ export const getMovies = async (movieTitle: string, pageNum: number, leaseYear: 
     try {
         let url = '';
         if (leaseYear !== '----') {
-            console.log("sss")
             url = `https://www.omdbapi.com/?s=${movieTitle}&type=movie&apikey=9c01b986&page=${pageNum}&y=${leaseYear}`;
         } else {
             url = `https://www.omdbapi.com/?s=${movieTitle}&type=movie&apikey=9c01b986&page=${pageNum}`;
         }
         const res = await axios.get(url)
-        console.log(res)
+        // console.log(res)
         if (res.data["Search"]) {
             const movieItems = res.data["Search"].map((mov: any) => ({
                 title: mov.Title,
@@ -43,7 +42,6 @@ export const getMovies = async (movieTitle: string, pageNum: number, leaseYear: 
                 poster: mov.Poster,
                 imdbID: mov.imdbID
             }));
-            console.log(movieItems)
             const newPageNum = pageNum;
             const totalResults = res.data.totalResults;
             const searchInput = movieTitle;

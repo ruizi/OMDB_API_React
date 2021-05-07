@@ -24,7 +24,6 @@ import {AddMessage} from "../actions/MessageAction";
 const SearchResults = () => {
     const _movies = useSelector((state: AppState) => state.movies);
     const movies: Array<Movie> = _movies['movieSearched'];
-    console.log(movies)
     const nominations: Array<Movie> = _movies['movieNominated'];
     const {
         pageNum,
