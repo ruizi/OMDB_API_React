@@ -9,9 +9,9 @@ the project deployed on GitHub page @ https://ruizi.github.io/OMDB_Searcher/
 ---
 ## Introduction
 
-This project is aim to build up a front-end page to receive use input and then searching movies by using OMDb API( http://www.omdbapi.com/) which is massive movie database.  
+This project aims to build up a front-end page to receive user inputs and then search movies through OMDb API( http://www.omdbapi.com/) which is a massive movie database.
 
-This project uses Material UI components to help manage page layout, also it uses the browser local storage to store nominated movies, so that the nomination lists can be loaded to the screen when users come back to the page.
+This project uses Material UI components to help manage page layout, also, the browser local storage was combined in this project to store nominated movies so that the nomination lists can be loaded to the screen whenever our users come back to the page.
 
 ---
 
