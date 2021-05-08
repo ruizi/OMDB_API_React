@@ -24,7 +24,7 @@ const App = () => {
         <React.Fragment>
             <Navbar/>
             <Message/>
-            <Container style={{margin: 'auto',minWidth:'300px'}}>
+            <Container style={{minWidth: '300px',padding:'0px'}}>
                 <div style={{justifyContent: 'center', display: 'flex'}}>
                     <SearchMovieInput/>
                 </div>
