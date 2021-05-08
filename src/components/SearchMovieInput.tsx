@@ -47,58 +47,55 @@ const SearchMovieInput = () => {
                     <Card style={{marginTop: "20px"}}>
                         <form onSubmit={submitInput}>
                             <CardContent>
-                                <Grid container>
-                                    <Grid item lg={12} sm={12} xl={12} xs={12}>
-                                        <Box style={{justifyContent: 'start', display: 'flex', flexWrap: 'wrap'}}>
-                                            <div style={{width: '80%', marginTop: '5px', marginRight: '5px'}}>
-                                                <TextField required label="movie title" fullWidth InputProps={{
-                                                    startAdornment: (
-                                                        <InputAdornment position="start">
-                                                            <SvgIcon fontSize="small" color="action"><SearchIcon/>
-                                                            </SvgIcon>
-                                                        </InputAdornment>
-                                                    )
-                                                }}
-                                                           onChange={(event) => {
-                                                               setMovieTitle(event.target.value)
-                                                           }}
-                                                           placeholder="Search a movie"
-                                                           variant="outlined"
-                                                           value={movieTitle}
-                                                />
-                                            </div>
-                                            <div style={{width: '18%', marginTop: '5px', marginRight: '5px'}}>
-                                                <TextField
-                                                    id="outlined-select-currency-native"
-                                                    select
-                                                    label="Lease year"
-                                                    value={movieLeaseYear}
-                                                    onChange={handleYearChange}
-                                                    SelectProps={{
-                                                        native: true,
-                                                    }}
-                                                    defaultValue="Default Value"
-                                                    fullWidth
-                                                    variant="outlined"
-                                                >
-                                                    {buildOptions()}
-                                                </TextField>
-                                            </div>
-                                            <div style={{width: '20%'}}>
-                                                <Button variant="contained" color="primary" type="submit" value="Submit"
-                                                        style={{
-                                                            textTransform: 'none',
-                                                            float: 'left',
-                                                            marginTop: "10px"
-                                                        }}>Search</Button>
-                                            </div>
-
-                                        </Box>
+                                <Grid container spacing={2}>
+                                    <Grid item xl={9} lg={9} md={9} sm={12} xs={12}>
+                                        <div style={{width: '100%', marginTop: '5px', marginRight: '5px'}}>
+                                            <TextField required label="movie title" fullWidth InputProps={{
+                                                startAdornment: (
+                                                    <InputAdornment position="start">
+                                                        <SvgIcon fontSize="small" color="action"><SearchIcon/>
+                                                        </SvgIcon>
+                                                    </InputAdornment>
+                                                )
+                                            }}
+                                                       onChange={(event) => {
+                                                           setMovieTitle(event.target.value)
+                                                       }}
+                                                       placeholder="Search a movie"
+                                                       variant="outlined"
+                                                       value={movieTitle}
+                                            />
+                                        </div>
                                     </Grid>
-                                    <Grid>
-                                        <Box>
-
-                                        </Box>
+                                    <Grid item xl={3} lg={3} md={3} sm={6} xs={6}>
+                                        <div style={{width: '100%', marginTop: '5px', marginRight: '5px'}}>
+                                            <TextField
+                                                id="outlined-select-currency-native"
+                                                select
+                                                label="Lease year"
+                                                value={movieLeaseYear}
+                                                onChange={handleYearChange}
+                                                SelectProps={{
+                                                    native: true,
+                                                }}
+                                                defaultValue="Default Value"
+                                                fullWidth
+                                                variant="outlined"
+                                            >
+                                                {buildOptions()}
+                                            </TextField>
+                                        </div>
+                                    </Grid>
+                                    <Grid item xl={2} lg={2} sm={6} xs={6}>
+                                        <div style={{width: '100%'}}>
+                                            <Button variant="contained" color="primary" type="submit"
+                                                    value="Submit"
+                                                    style={{
+                                                        textTransform: 'none',
+                                                        float: 'left',
+                                                        marginTop: "10px"
+                                                    }}>Search</Button>
+                                        </div>
                                     </Grid>
                                 </Grid>
                             </CardContent>
